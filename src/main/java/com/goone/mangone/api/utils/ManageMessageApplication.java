@@ -2,8 +2,8 @@ package com.goone.mangone.api.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 
 import java.util.Locale;
 
@@ -83,7 +83,11 @@ public class ManageMessageApplication {
     public static final String ERROR_UNAUTHORIZED = "error.unauthorized";
 
     public String getMessage(String code){
-        return messageSource.getMessage(code, null, Locale.getDefault());
+        return messageSource.getMessage(code, new Object[]{"MessageSource"}, LocaleContextHolder.getLocale());
+    }
+
+    public String getMessage(String code, Locale locale){
+        return messageSource.getMessage(code, new Object[]{"MessageSource"}, locale);
     }
 
 }

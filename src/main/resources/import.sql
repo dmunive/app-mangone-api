@@ -176,6 +176,7 @@ CREATE TABLE IF NOT EXISTS comic_db.tb_catalog_detail (
 INSERT INTO `comic_db`.`tb_catalog` (`code`, `description`, `created_at`, `status`) VALUES ('LIST_STATUS', 'Lista de Estados', current_date, '1');
 INSERT INTO `comic_db`.`tb_catalog_detail` (`catalog_id`, `value`, `description`, `created_at`, `status`) VALUES ('1', '1', 'Activo', current_date, '1');
 INSERT INTO `comic_db`.`tb_catalog_detail` (`catalog_id`, `value`, `description`, `created_at`, `status`) VALUES ('1', '0', 'Inactivo', current_date, '1');
+INSERT INTO `comic_db`.`tb_user` (`name`, `last_name`, `email`, `password`, `created_at`, `status`) VALUES ('Daniel', 'Munive', 'daniel.muniveo@goone.pe', '$2a$04$5sSJ3jhcVm4BkdT9GgP/kOE4a5jy6X9.IAsjO8ZAzJozEoReYxKOq', current_date, '1');
 
 SET FOREIGN_KEY_CHECKS=1;
 SET UNIQUE_CHECKS=1;
