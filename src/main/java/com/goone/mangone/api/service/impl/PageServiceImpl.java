@@ -41,6 +41,7 @@ public class PageServiceImpl implements PageService {
         page.setCreatedAt(new Date());
         page.setStatus(pageRequest.getStatus());
         page = pageDAO.save(page);
+        pageDAO.flush();
         page.setImage(FileUtils.setPathImage(imageProperties.getDomain(), page.getImage()));
         return page;
     }
@@ -68,6 +69,7 @@ public class PageServiceImpl implements PageService {
         page.setUpdatedAt(new Date());
         page.setStatus(pageRequest.getStatus());
         page = pageDAO.save(page);
+        pageDAO.flush();
         page.setImage(FileUtils.setPathImage(imageProperties.getDomain(), page.getImage()));
         return page;
     }

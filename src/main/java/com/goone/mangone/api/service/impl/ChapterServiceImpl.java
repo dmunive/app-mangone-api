@@ -42,6 +42,7 @@ public class ChapterServiceImpl implements ChapterService {
         chapter.setCreatedAt(new Date());
         chapter.setStatus(chapterRequest.getStatus());
         chapter = chapterDAO.save(chapter);
+        chapterDAO.flush();
         chapter.setImage(FileUtils.setPathImage(imageProperties.getDomain(), chapter.getImage()));
         return chapter;
     }
@@ -70,6 +71,7 @@ public class ChapterServiceImpl implements ChapterService {
         chapter.setUpdatedAt(new Date());
         chapter.setStatus(chapterRequest.getStatus());
         chapter = chapterDAO.save(chapter);
+        chapterDAO.flush();
         chapter.setImage(FileUtils.setPathImage(imageProperties.getDomain(), chapter.getImage()));
         return chapter;
     }

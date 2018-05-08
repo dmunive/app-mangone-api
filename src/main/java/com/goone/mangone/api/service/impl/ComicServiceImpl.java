@@ -55,6 +55,7 @@ public class ComicServiceImpl implements ComicService {
         comic.setCategories(formatCategories(comicRequest));
         comic.setStatus(comicRequest.getStatus());
         comic = comicDAO.save(comic);
+        comicDAO.flush();
         comic.setImage(FileUtils.setPathImage(imageProperties.getDomain(), comic.getImage()));
         return comic;
     }
@@ -87,6 +88,7 @@ public class ComicServiceImpl implements ComicService {
         comic.setUpdatedAt(new Date());
         comic.setStatus(comicRequest.getStatus());
         comic = comicDAO.save(comic);
+        comicDAO.flush();
         comic.setImage(FileUtils.setPathImage(imageProperties.getDomain(), comic.getImage()));
         return comic;
     }
