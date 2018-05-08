@@ -41,10 +41,7 @@ public class ChapterServiceImpl implements ChapterService {
         chapter.setComicId(comicId);
         chapter.setCreatedAt(new Date());
         chapter.setStatus(chapterRequest.getStatus());
-        chapter = chapterDAO.save(chapter);
-        chapterDAO.flush();
-        chapter.setImage(FileUtils.setPathImage(imageProperties.getDomain(), chapter.getImage()));
-        return chapter;
+        return chapterDAO.save(chapter);
     }
 
     public ChapterEntity readChapter(Long comicId, Long chapterId) {
@@ -70,10 +67,7 @@ public class ChapterServiceImpl implements ChapterService {
         chapter.setNumber(chapterRequest.getNumber());
         chapter.setUpdatedAt(new Date());
         chapter.setStatus(chapterRequest.getStatus());
-        chapter = chapterDAO.save(chapter);
-        chapterDAO.flush();
-        chapter.setImage(FileUtils.setPathImage(imageProperties.getDomain(), chapter.getImage()));
-        return chapter;
+        return chapterDAO.save(chapter);
     }
 
     public Paginator<ChapterEntity> searchChapter(Long comicId, ChapterSearchParams params, Pageable pageable) {

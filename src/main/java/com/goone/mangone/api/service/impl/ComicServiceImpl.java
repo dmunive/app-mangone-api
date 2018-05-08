@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.SerializationUtils;
 import org.springframework.util.StringUtils;
 
 import javax.transaction.Transactional;
@@ -54,10 +55,7 @@ public class ComicServiceImpl implements ComicService {
         comic.setCreatedAt(new Date());
         comic.setCategories(formatCategories(comicRequest));
         comic.setStatus(comicRequest.getStatus());
-        comic = comicDAO.save(comic);
-        comicDAO.flush();
-        comic.setImage(FileUtils.setPathImage(imageProperties.getDomain(), comic.getImage()));
-        return comic;
+        return comicDAO.save(comic);
     }
 
     public ComicEntity readComic(Long comicId) {
@@ -87,10 +85,7 @@ public class ComicServiceImpl implements ComicService {
         comic.setCategories(formatCategories(comicRequest));
         comic.setUpdatedAt(new Date());
         comic.setStatus(comicRequest.getStatus());
-        comic = comicDAO.save(comic);
-        comicDAO.flush();
-        comic.setImage(FileUtils.setPathImage(imageProperties.getDomain(), comic.getImage()));
-        return comic;
+        return comicDAO.save(comic);
     }
 
     public Paginator<ComicEntity> searchComic(ComicSearchParams params, Pageable pageable) {

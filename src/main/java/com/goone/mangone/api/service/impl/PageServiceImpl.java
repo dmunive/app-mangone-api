@@ -40,10 +40,7 @@ public class PageServiceImpl implements PageService {
         page.setImage(FileUtils.saveImage(pageRequest.getImage(), imageProperties.getServer(), imageProperties.getComics(), "image", manageMessageApplication.getMessage(ManageMessageApplication.ERROR_PAGES_IMAGE_SAVE)));
         page.setCreatedAt(new Date());
         page.setStatus(pageRequest.getStatus());
-        page = pageDAO.save(page);
-        pageDAO.flush();
-        page.setImage(FileUtils.setPathImage(imageProperties.getDomain(), page.getImage()));
-        return page;
+        return pageDAO.save(page);
     }
 
     public PageEntity readPage(Long comicId, Long chapterId, Long pageId) {
@@ -68,10 +65,7 @@ public class PageServiceImpl implements PageService {
         }
         page.setUpdatedAt(new Date());
         page.setStatus(pageRequest.getStatus());
-        page = pageDAO.save(page);
-        pageDAO.flush();
-        page.setImage(FileUtils.setPathImage(imageProperties.getDomain(), page.getImage()));
-        return page;
+        return pageDAO.save(page);
     }
 
     public Paginator<PageEntity> searchPage(Long comicId, Long chapterId, PageSearchParams params, Pageable pageable){
