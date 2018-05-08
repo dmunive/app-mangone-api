@@ -20,7 +20,7 @@ public class FileUtils {
         File file = new File(Paths.get(server).toString() + Paths.get(path).toString() + File.separator + date);
         boolean toSave = true;
         if (!file.exists()) {
-            toSave = file.mkdir();
+            toSave = file.mkdirs();
         }
         if (toSave) {
             nameImage = Paths.get(path).toString() + File.separator + date + File.separator + generateRamdomFileName();
